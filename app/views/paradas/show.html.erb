@@ -1,4 +1,34 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+  <strong>Linha:</strong>
+  <%= @parada.linha %>
+</p>
+
+<p>
+  <strong>Sequencia:</strong>
+  <%= @sequencia.descricao %>
+</p>
+
+<p>
+  <strong>Descricao:</strong>
+  <%= @parada.descricao %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @parada.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @parada.longitude %>
+</p>
+
+<p>
+  <strong>Endereço:</strong>
+  <%= @parada.endereco %>
+</p>
+
 <%= link_to 'Edit', edit_parada_path(@parada) %> |
 <%= link_to 'Back', paradas_path %>

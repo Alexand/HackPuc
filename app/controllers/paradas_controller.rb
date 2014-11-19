@@ -5,6 +5,12 @@ class ParadasController < ApplicationController
   # GET /paradas.json
   def index
     @paradas = Parada.all
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @paradas }
+      format.xml { render xml: @paradas }
+    end
   end
 
   # GET /paradas/1
@@ -69,6 +75,6 @@ class ParadasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def parada_params
-      params[:parada]
+      params.require(:parada).permit(:linha, :sequencia, :descricao, :latitude, :longitude, :endereco)
     end
 end

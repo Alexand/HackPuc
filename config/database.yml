@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: blog_development
+  database: hackpuc_development
   username: <%= ENV['DB_USER'] %>
   password: <%= ENV['DB_PASS'] %>
 
@@ -59,7 +59,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: blog_test
+  database: hackpuc_development
   username: <%= ENV['DB_USER'] %>
   password: <%= ENV['DB_PASS'] %>
 
@@ -84,6 +84,6 @@ test:
 #
 production:
   <<: *default
-  database: blog_production
+  database: hackpuc_development
   username: blog
   password: <%= ENV['BLOG_DATABASE_PASSWORD'] %>

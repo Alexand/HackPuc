@@ -11,45 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141119202233) do
+ActiveRecord::Schema.define(version: 20141119224956) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "articles", force: true do |t|
-    t.string   "title"
-    t.text     "body"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
-    t.string   "subtitle"
-  end
-
-  create_table "authors", force: true do |t|
-    t.string   "username",         null: false
-    t.string   "email",            null: false
-    t.string   "crypted_password", null: false
-    t.string   "salt",             null: false
+  create_table "chamadas", force: true do |t|
+    t.string   "linha"
+    t.integer  "parada_id"
+    t.text     "descricao"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "authors", ["email"], name: "index_authors_on_email", unique: true, using: :btree
-
-  create_table "comments", force: true do |t|
-    t.string   "author_name"
-    t.text     "body"
-    t.integer  "article_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "comments", ["article_id"], name: "index_comments_on_article_id", using: :btree
-
-  create_table "contacts", force: true do |t|
+  create_table "contatos", force: true do |t|
+    t.text     "mensagem"
+    t.integer  "user_id"
+    t.integer  "tipo_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -57,27 +36,22 @@ ActiveRecord::Schema.define(version: 20141119202233) do
   create_table "paradas", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "linha"
+    t.string   "descricao"
+    t.integer  "sequencia"
+    t.decimal  "latitude"
+    t.decimal  "longitude"
+    t.string   "endereco"
   end
 
-  create_table "posts", force: true do |t|
-    t.string   "title"
-    t.text     "body"
+  create_table "tipos_contatos", force: true do |t|
+    t.string   "descricao"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "taggings", force: true do |t|
-    t.integer  "tag_id"
-    t.integer  "article_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "taggings", ["article_id"], name: "index_taggings_on_article_id", using: :btree
-  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
-
-  create_table "tags", force: true do |t|
-    t.string   "name"
+  create_table "users", force: true do |t|
+    t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

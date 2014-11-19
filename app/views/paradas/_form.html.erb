@@ -10,6 +10,31 @@
       </ul>
     </div>
   <% end %>
+  
+  <div class="field">
+    <%= f.label :linha %><br>
+    <%= f.text_field :linha %>
+  </div>
+  <div class="field">
+    <%= f.label :sequencia %><br>
+    <%= f.number_field :sequencia %>
+  </div>
+  <div class="field">
+    <%= f.label :descricao %><br>
+    <%= f.text_area :descricao %>
+  </div>
+  <div class="field">
+    <%= f.label :latitude %><br>
+    <%= f.number_field :latitude, :class => 'text_field', :step => 'any' %>
+  </div>
+  <div class="field">
+    <%= f.label :longitude %><br>
+    <%= f.number_field :longitude, :class => 'text_field', :step => 'any' %>
+  </div>
+  <div class="field">
+    <%= f.label :endereco %><br>
+    <%= f.text_area :endereco %>
+  </div>
 
   <div class="actions">
     <%= f.submit %>

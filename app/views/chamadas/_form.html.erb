@@ -1,0 +1,33 @@
+<%= form_for(@chamada) do |f| %>
+  <% if @chamada.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@chamada.errors.count, "error") %> prohibited this chamada from being saved:</h2>
+
+      <ul>
+      <% @chamada.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :linha %><br>
+    <%= f.text_field :linha %>
+  </div>
+  <div class="field">
+    <%= f.label :parada_id %><br>
+    <%= f.number_field :parada_id %>
+  </div>
+  <div class="field">
+    <%= f.label :descricao %><br>
+    <%= f.text_area :descricao %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
