@@ -4,10 +4,10 @@
   <thead>
     <tr>
       <th>Linha</th>
-      <th></th>
       <th>Parada</th>
       <th>Descricao</th>
       <th>User</th>
+      <th>Data</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,7 +18,12 @@
         <td><%= chamada.linha %></td>
         <td><%= chamada.parada_id %></td>
         <td><%= chamada.descricao %></td>
+        <% if chamada.user %>
+        <td><%= chamada.user.email %></td>
+        <% else %>
         <td><%= chamada.user_id %></td>
+        <% end %>
+        <td><%= chamada.created_at.strftime("%d %b, %Y - %H:%M") %></td>
         <td><%= link_to 'Show', chamada %></td>
         <td><%= link_to 'Edit', edit_chamada_path(chamada) %></td>
         <td><%= link_to 'Destroy', chamada, method: :delete, data: { confirm: 'Are you sure?' } %></td>

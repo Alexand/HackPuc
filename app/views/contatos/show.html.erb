@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Mensagem:</strong>
   <%= @contato.mensagem %>
@@ -7,13 +5,19 @@
 
 <p>
   <strong>User:</strong>
-  <%= @contato.user_id %>
+  <%= @contato.user.email %>
 </p>
 
 <p>
   <strong>Tipo:</strong>
   <%= @contato.tipo_id %>
 </p>
+
+<p>
+  <strong>Data:</strong>
+  <%= @contato.created_at.strftime("%d %b, %Y - %H:%M") %>
+</p>
+
 
 <%= link_to 'Edit', edit_contato_path(@contato) %> |
 <%= link_to 'Back', contatos_path %>

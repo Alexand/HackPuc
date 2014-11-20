@@ -26,6 +26,8 @@ class ContatosController < ApplicationController
   def create
     @contato = Contato.new(contato_params)
 
+    
+
     respond_to do |format|
       if @contato.save
         format.html { redirect_to @contato, notice: 'Contato was successfully created.' }
