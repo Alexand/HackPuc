@@ -86,12 +86,16 @@ class ParadasController < ApplicationController
   end
 
   def proximasPorBairro
-    @paradas = Parada.find_by_sql(["SELECT * FROM paradas WHERE bairro = ? AND 
-                                    distancia_km(?, ?, latitude, longitude) <= 1 AND 
-                                    distancia_km(?, ?, latitude, longitude) > 0 
-                                    order by distancia_km(?, ?, latitude, longitude) asc limit 3", 
-                                    params[:bairro].upcase, params[:lat], params[:long], params[:lat], 
-                                    params[:long],
+    @paradas = Parada.find_by_sql(["select * from paradas  where distancia_km(?, ?, latitude, longitude) <= 1
+                                    AND distancia_km(?, ?, latitude, longitude) > 0
+                                    and linha in (
+                                      SELECT distinct linha FROM paradas 
+                                      WHERE bairro = ?)
+                                    order by 
+                                    distancia_km(?, ?, latitude, longitude)
+                                    asc
+                                    limit 3", 
+                                    params[:lat], params[:long], params[:lat], params[:long], params[:bairro].upcase,
                                     params[:lat], params[:long]])
     respond_to do |format|
       format.html

@@ -5,6 +5,10 @@ class ChamadasController < ApplicationController
   # GET /chamadas.json
   def index
     @chamadas = Chamada.all
+    respond_to do |format|
+      format.html
+      format.json { render json: @chamadas }
+    end
   end
 
   # GET /chamadas/1
