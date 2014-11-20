@@ -9,6 +9,8 @@
       <th>Agência</th>
       <th>Latitude</th>
       <th>Longitude</th>
+      <th>Endereço</th>
+      <th>Bairro</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -22,6 +24,8 @@
         <td><%= parada.agencia %></td>
         <td><%= parada.latitude %></td>
         <td><%= parada.longitude %></td>
+        <td><%= parada.endereco %></td>
+        <td><%= parada.bairro %></td>
         <td><%= link_to 'Show', parada %></td>
         <td><%= link_to 'Edit', edit_parada_path(parada) %></td>
         <td><%= link_to 'Destroy', parada, method: :delete, data: { confirm: 'Are you sure?' } %></td>
