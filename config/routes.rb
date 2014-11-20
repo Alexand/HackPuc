@@ -11,6 +11,9 @@ Rails.application.routes.draw do
     collection { post :import }
   end
 
+  get '/paradas_proximas_por_linha/:lat/:long/:linha', to: 'paradas#proximasPorLinha'
+  get '/paradas_proximas_por_bairro/:lat/:long/:bairro', to: 'paradas#proximasPorBairro'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

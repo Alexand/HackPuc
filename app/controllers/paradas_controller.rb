@@ -72,6 +72,34 @@ class ParadasController < ApplicationController
     redirect_to root_url, notice: "Paradas Importadas"
   end
 
+  def proximasPorLinha
+    minLat = params[:lat].to_d - 0.009
+    maxLat = params[:lat].to_d + 0.009
+    minLong = params[:long].to_d - 0.009
+    maxLong = params[:long].to_d + 0.009
+
+    @paradas = Parada.where('(longitude between ? and ?) and (latitude between ? and ?) and linha = ?', 
+                            minLong, maxLong, minLat, maxLat, params[:linha])
+    respond_to do |format|
+      format.html
+      format.json { render json: @paradas}
+    end
+  end
+
+  def proximasPorBairro
+    minLat = params[:lat].to_d - 0.009
+    maxLat = params[:lat].to_d + 0.009
+    minLong = params[:long].to_d - 0.009
+    maxLong = params[:long].to_d + 0.009
+
+    @paradas = Parada.where("(longitude between ? and ?) and (latitude between ? and ?) and endereco like ?", 
+                              minLong, maxLong, minLat, maxLat, "%#{params[:bairro].upcase}%")
+    respond_to do |format|
+      format.html
+      format.json { render json: @paradas}
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_parada
