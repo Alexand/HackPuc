@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   get '/paradas_proximas_por_linha/:lat/:long/:linha', to: 'paradas#proximasPorLinha'
   get '/paradas_proximas_por_bairro/:lat/:long/:bairro', to: 'paradas#proximasPorBairro'
+  get '/chamadas_por_status/:status/', to: 'chamadas#porStatus'
 
   get '/relatorios', to: 'relatorios#index'
 

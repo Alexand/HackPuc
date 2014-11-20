@@ -65,6 +65,14 @@ class ChamadasController < ApplicationController
     end
   end
 
+  def porStatus
+    @chamadas = Chamada.find_by status: params[:status]
+
+    respond_to do |format|
+      format.json {render json: @chamadas}
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_chamada
