@@ -73,27 +73,26 @@ class ParadasController < ApplicationController
   end
 
   def proximasPorLinha
-    minLat = params[:lat].to_d - 0.009
-    maxLat = params[:lat].to_d + 0.009
-    minLong = params[:long].to_d - 0.009
-    maxLong = params[:long].to_d + 0.009
-
-    @paradas = Parada.where('(longitude between ? and ?) and (latitude between ? and ?) and linha = ?', 
-                            minLong, maxLong, minLat, maxLat, params[:linha])
+    @paradas = Parada.find_by_sql(["SELECT * FROM paradas WHERE linha = ? AND 
+                                    distancia_km(?, ?, latitude, longitude) <= 1 AND 
+                                    distancia_km(?, ?, latitude, longitude) > 0 
+                                    order by distancia_km(?, ?, latitude, longitude) asc limit 3", 
+                                    params[:linha].upcase, params[:lat], params[:long], params[:lat], 
+                                    params[:long],
+                                    params[:lat], params[:long]])
     respond_to do |format|
-      format.html
       format.json { render json: @paradas}
     end
   end
 
   def proximasPorBairro
-    minLat = params[:lat].to_d - 0.009
-    maxLat = params[:lat].to_d + 0.009
-    minLong = params[:long].to_d - 0.009
-    maxLong = params[:long].to_d + 0.009
-
-    @paradas = Parada.where("(longitude between ? and ?) and (latitude between ? and ?) and endereco like ?", 
-                              minLong, maxLong, minLat, maxLat, "%#{params[:bairro].upcase}%")
+    @paradas = Parada.find_by_sql(["SELECT * FROM paradas WHERE bairro = ? AND 
+                                    distancia_km(?, ?, latitude, longitude) <= 1 AND 
+                                    distancia_km(?, ?, latitude, longitude) > 0 
+                                    order by distancia_km(?, ?, latitude, longitude) asc limit 3", 
+                                    params[:bairro].upcase, params[:lat], params[:long], params[:lat], 
+                                    params[:long],
+                                    params[:lat], params[:long]])
     respond_to do |format|
       format.html
       format.json { render json: @paradas}
