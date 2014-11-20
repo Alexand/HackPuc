@@ -1,6 +1,7 @@
 class ParadasController < ApplicationController
   before_action :set_parada, only: [:show, :edit, :update, :destroy]
-
+  
+  
   # GET /paradas
   # GET /paradas.json
   def index
