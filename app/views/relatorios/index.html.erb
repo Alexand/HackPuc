@@ -1,0 +1,11 @@
+<%= content_for :title, 'Relatórios' %>
+
+<div class="row">
+
+  <!-- Line Chart - Single Series -->
+  <div class="col-xs-6">
+    <h3>Paradas By Day</h3>
+    <%= line_chart @paradas.group_by_day(:created_at, format: "%B %d, %Y").count, discrete: true %>
+  </div>
+
+</div>

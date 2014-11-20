@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'relatorios/index'
+
   devise_for :users
   resources :tipos_contatos
 
@@ -12,6 +14,8 @@ Rails.application.routes.draw do
 
   get '/paradas_proximas_por_linha/:lat/:long/:linha', to: 'paradas#proximasPorLinha'
   get '/paradas_proximas_por_bairro/:lat/:long/:bairro', to: 'paradas#proximasPorBairro'
+
+  get '/relatorios', to: 'relatorios#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

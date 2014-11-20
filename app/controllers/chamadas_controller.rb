@@ -73,6 +73,6 @@ class ChamadasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def chamada_params
-      params.require(:chamada).permit(:linha, :parada_id, :descricao, :user_id)
+      params.require(:chamada).permit(:linha, :parada_id, :descricao, :user_id, :status)
     end
 end

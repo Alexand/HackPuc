@@ -1,4 +1,8 @@
-<p id="notice"><%= notice %></p>
+<%= content_for :title, 'Chamada #' + @chamada.id.to_s %>
+<p>
+  <strong>Status:</strong>
+  <%= @chamada.status %>
+</p>
 
 <p>
   <strong>Linha:</strong>
@@ -17,7 +21,12 @@
 
 <p>
   <strong>User:</strong>
-  <%= @chamada.user.email %>
+<% if @chamada.user %>
+  <%= @chamada.user.email %>      
+<% else %>
+  <%= @chamada.user_id %>      
+<% end %>
+  
 </p>
 
 <p>

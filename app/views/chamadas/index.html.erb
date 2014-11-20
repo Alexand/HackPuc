@@ -1,8 +1,10 @@
-<h1>Listing chamadas</h1>
+<%= content_for :title, 'Lista de Chamadas' %>
 
 <table>
   <thead>
     <tr>
+      <th>#</th>
+      <th>Status</th>
       <th>Linha</th>
       <th>Parada</th>
       <th>Descricao</th>
@@ -15,6 +17,8 @@
   <tbody>
     <% @chamadas.each do |chamada| %>
       <tr>
+        <td><%= chamada.id %>
+        <td><%= chamada.status %>
         <td><%= chamada.linha %></td>
         <td><%= chamada.parada_id %></td>
         <td><%= chamada.descricao %></td>
@@ -34,4 +38,4 @@
 
 <br>
 
-<%= link_to 'New Chamada', new_chamada_path %>
+<%= link_to 'Nova Chamada', new_chamada_path %>
