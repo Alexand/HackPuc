@@ -73,13 +73,11 @@ class ParadasController < ApplicationController
   end
 
   def proximasPorLinha
-    @paradas = Parada.find_by_sql(["SELECT * FROM paradas WHERE linha = ? AND 
-                                    distancia_km(?, ?, latitude, longitude) <= 1 AND 
-                                    distancia_km(?, ?, latitude, longitude) > 0 
-                                    order by distancia_km(?, ?, latitude, longitude) asc limit 3", 
-                                    params[:linha].upcase, params[:lat], params[:long], params[:lat], 
-                                    params[:long],
-                                    params[:lat], params[:long]])
+    @paradas = Parada.where("linha = ? AND 
+                              distancia_km(?, ?, latitude, longitude) <= 1 AND 
+                              distancia_km(?, ?, latitude, longitude) > 0 ", 
+                              params[:linha].upcase, params[:lat], params[:long], params[:lat], params[:long])
+                     .order("distancia_km(#{params[:lat].to_f}, #{params[:long].to_f}, latitude, longitude)").limit(4)
     respond_to do |format|
       format.json { render json: @paradas}
     end
