@@ -1,2 +1,16 @@
 @import "bootstrap";
 body { padding-top: 60px; }
+nav.navbar.navbar-inverse.navbar-fixed-top{
+	background-color: #e52f16;
+	border-color: none;
+	padding-bottom: 13px;
+}
+
+td{
+	padding-left: 10px;
+}
+
+a{
+	padding-left: 10px;
+	color: #48446d !important;
+}
