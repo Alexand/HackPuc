@@ -67,6 +67,11 @@ class ParadasController < ApplicationController
     end
   end
 
+  def import
+    Parada.import(params[:file])
+    redirect_to root_url, notice: "Paradas Importadas"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_parada
