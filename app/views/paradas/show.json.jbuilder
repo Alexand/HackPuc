@@ -1,1 +1,1 @@
-json.extract! @parada, :id, :created_at, :updated_at
+json.extract! @parada, :id, :linha, :descricao, :sequencia, :agencia, :latitude, :longitude, :endereco, :bairro, :created_at, :updated_at

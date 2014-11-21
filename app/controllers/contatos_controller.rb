@@ -71,6 +71,6 @@ class ContatosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contato_params
-      params.require(:contato).permit(:mensagem, :user_id, :tipo_id)
+      params.require(:contato).permit(:mensagem, :user_id, :tipo_id, :linha, :placa)
     end
 end

@@ -4,6 +4,8 @@
   <thead>
     <tr>
       <th>Mensagem</th>
+      <th>Linha de Ônibus</th>
+      <th>Placa do Veículo</th>
       <th>User</th>
       <th>Tipo</th>
       <th>Data</th>
@@ -15,6 +17,8 @@
     <% @contatos.each do |contato| %>
       <tr>
         <td><%= contato.mensagem %></td>
+        <td><%= contato.linha %></td>
+        <td><%= contato.placa %></td>
         <td><%= contato.user.email %></td>
         <td><%= contato.tipo_id %></td>
         <td><%= contato.created_at.strftime("%d %b, %Y - %H:%M") %></td>
