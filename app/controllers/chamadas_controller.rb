@@ -66,7 +66,7 @@ class ChamadasController < ApplicationController
   end
 
   def porStatus
-    @chamadas = Chamada.where(status: params[:status])
+    @chamadas = Chamada.where(status: params[:status]).order('created_at DESC')
 
     respond_to do |format|
       format.json {render json: @chamadas.to_a}
