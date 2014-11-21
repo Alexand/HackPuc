@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get '/relatorios', to: 'relatorios#index'
   get '/email/:user/', to: 'contatos#formResposta', as: 'form_resposta'
   post '/contatos/contactResponse/', to: 'contatos#contactResponse', as: 'contactResponse'
+  post '/chamada/postUpdate/', to: 'chamadas#postUpdate', as: 'postUpdate'
 
   match '/contacts/:email',     to: 'contacts#new',             via: 'get', as:'contactsNew'
   resources "contacts", only: [:new, :create]

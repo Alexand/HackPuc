@@ -55,6 +55,18 @@ class ChamadasController < ApplicationController
     end
   end
 
+  def postUpdate
+    @chamada = Chamada.find(params[:chamada][:id])
+    @chamada.status = params[:chamada][:status]
+    respond_to do |format|
+      if @chamada.update(chamada_params)
+        format.json { render :show, status: :ok, location: @chamada }
+      else
+        format.json { render json: @chamada.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # DELETE /chamadas/1
   # DELETE /chamadas/1.json
   def destroy
