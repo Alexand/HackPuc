@@ -25,19 +25,37 @@
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        
-      </ul>
-      <p class="navbar-text pull-right" style="color:#fff">
         <% if user_signed_in? %>
-          Logged in as <strong ><%= current_user.email %></strong>.
-          <strong ><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-          </strong>
+          <li class="dropdown" style="background-color: #e52f16;">
+            <a href="#" class="dropdown-toggle" style="color:#fff" data-toggle="dropdown">
+              <strong><%= "#{current_user.email}" %></strong><span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li><strong >
+                <%= link_to 'Paradas', paradas_path, :class => 'navbar-link' %> </strong></li>
+                <li><strong >
+                <%= link_to 'Chamadas', chamadas_path, :class => 'navbar-link' %> </strong></li>
+                <li><strong >
+                <%= link_to 'Contatos', contatos_path, :class => 'navbar-link' %> </strong></li>
+                <li><strong >
+                <%= link_to 'Relatórios', relatorios_path, :class => 'navbar-link' %> </strong></li>
+              <li class="divider"></li>
+              <li><strong >
+                <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> </strong></li>
+              <li>
+                <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+              </li>
+          </ul>
         <% else %>
-          <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-          <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+          <li>
+            <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> </li>
+            
+            <li>
+            <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+            
+          </li>
         <% end %>
-      </p>      
+      </ul> 
     </nav>
 
 
