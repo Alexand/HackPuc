@@ -66,10 +66,10 @@ class ChamadasController < ApplicationController
   end
 
   def porStatus
-    @chamadas = Chamada.find_by status: params[:status]
+    @chamadas = Chamada.where(status: params[:status])
 
     respond_to do |format|
-      format.json {render json: @chamadas}
+      format.json {render json: @chamadas.to_a}
     end
   end
 
