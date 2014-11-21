@@ -19,7 +19,7 @@
         <td><%= contato.mensagem %></td>
         <td><%= contato.linha %></td>
         <td><%= contato.placa %></td>
-        <td><%= contato.user.email %></td>
+        <td><%= link_to contato.user.email, contactsNew_path(contato.user.email) %></td>
         <td><%= contato.tipo_id %></td>
         <td><%= contato.created_at.strftime("%d %b, %Y - %H:%M") %></td>
         <td><%= link_to 'Show', contato %></td>

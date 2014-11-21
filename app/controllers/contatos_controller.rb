@@ -63,6 +63,14 @@ class ContatosController < ApplicationController
     end
   end
 
+  def formResposta    
+    @user = User.where("email like '%#{params[:user]}%'").first.email
+  end
+
+  def contactResponse
+    ContactMailer.SendMail(params[:user], params[:message])
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_contato

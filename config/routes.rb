@@ -17,6 +17,11 @@ Rails.application.routes.draw do
   get '/chamadas_por_status/:status/', to: 'chamadas#porStatus'
 
   get '/relatorios', to: 'relatorios#index'
+  get '/email/:user/', to: 'contatos#formResposta', as: 'form_resposta'
+  post '/contatos/contactResponse/', to: 'contatos#contactResponse', as: 'contactResponse'
+
+  match '/contacts/:email',     to: 'contacts#new',             via: 'get', as:'contactsNew'
+  resources "contacts", only: [:new, :create]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
